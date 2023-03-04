@@ -1,0 +1,8 @@
+1. npx create-react-app-offline -n foldername 
+1b. cd into foldername
+1c. fix permission denied by type chmod 777 URL
+2. npm install react-tsparticles 
+3. npm install react-tsparticles 
+
+use link for code: https://www.npmjs.com/package/react-tsparticles
+copy the 'Options object'

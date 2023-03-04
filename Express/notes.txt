@@ -1,0 +1,105 @@
+Express is a server side tool, used to make server services.
+Express surports making rest services.
+Rest services mostly exposes data in the form of JSON.
+JSON stands for javascript object notation
+JSON is a means of transfering DATA Uusing KEY value Pair.
+EXAMPLE OF JSON {"name": "john", "age":19}
+Express is a framework which supports making web applications
+To create a node js project, we have to fire " npm init --y "
+This creates a Package.JSON
+In Package.JSON, we can store various dependencies.
+Downloading the express Dependencies, " npm i express "
+
+"node server.js" to run server
+express server has different method mappings
+Example: GET, POST, PUT, DELETE .
+GET is used for fetching the data from the server.
+POST is used for inserting the Data into the server.
+PUT is used for updating the Data.
+DELETE is for deleting the data from the server.
+
+
+To use Express generator
+**parametereg**
+npx express-generator
+
+**parametereg1**
+npm init --y
+npm i express
+npm install -g nodemon
+
+server.js
+
+var express = require("express");
+var app = express();
+app.get("/", (request, response) => {
+  return response.send("Hello from " + request.query.name);
+});
+
+app.listen(3000, () => console.log("server has started"));
+
+
+
+nodemon server.js
+
+in a Browser, pass "http://localhost:3000/?name=Emmanuel"  you can pass any name.
+
+Parameter serves as input to the server.
+
+In the POST request, the Data comes in the form of REQUESTBODY.
+To get that data in server.js, we will have to make use of body-parser
+
+var bodyParser = require('body-parser')
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
+
+For post request we will have to pass the data in the form of JSON.
+for doing that in POSTMAN, we have to select the Body and within the Body, select the typa as JSON
+
+Routes
+routing is a feature in express which allows to create different file and different mapping for different files.
+
+userapi
+user.js
+var express = require("express");
+var router = express.Router();
+const userdata = [];
+router.get("/", (request, response) => {
+  return response.json(userdata);
+});
+
+router.post("/", (request, response) => {
+  let user = request.body;
+  userdata.push(user);
+  return response.json({ success: true });
+});
+
+router.get("/id", (request, response) => {
+  let data = {};
+  for (let i = 0; i < userdata.length; i++) {
+    if (userdata[i].id == request.query.id) {
+      data = userdata[i];
+      break;
+    }
+  }
+  console.log(data)
+  return response.json(data);
+});
+module.exports = router
+
+server.js
+var express = require("express");
+var app = express();
+
+var bodyParser = require('body-parser')
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
+
+var user = require("./user")
+app.use("/user", user)
+
+app.listen(3000, () => console.log("server has started"));

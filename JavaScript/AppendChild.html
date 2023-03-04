@@ -1,0 +1,27 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <title>JavaScript appendChild() Method</title>  
+    <style>  
+    </style>  
+</head>   
+<body>  
+    <h1>JavaTPoint</h1>  
+    <h2>JavaScript appendChild() Method</h2>  
+    <ul id="languages">  
+        <li>Python</li>  
+        <li>Java</li>  
+    <li>Data Structure</li>  
+    </ul>  
+    <button onclick="append()">Append</button>  
+    <script>  
+        function append() {  
+            var node = document.createElement("LI");  
+            var textnode =   
+                document.createTextNode("C#");  
+            node.appendChild(textnode);  
+            document.getElementById("languages").appendChild(node);  
+        }  
+    </script>  
+</body>  
+</html>  

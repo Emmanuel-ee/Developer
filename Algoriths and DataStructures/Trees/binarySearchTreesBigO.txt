@@ -1,0 +1,2 @@
+O(log n) --- Best Case
+O(n) --- Worst Case

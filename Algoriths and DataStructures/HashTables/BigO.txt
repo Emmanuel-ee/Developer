@@ -1,0 +1,2 @@
+HashMethod = O(1)
+HashMethod.get = O(1)

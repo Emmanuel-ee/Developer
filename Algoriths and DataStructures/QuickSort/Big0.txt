@@ -1,0 +1,8 @@
+space complexity = O(1)
+time complexity = O(n log n) - Best case
+
+for an already Sorted Data, time comlexity = O(n**2)
+
+very good for random algorithm.
+
+insertion sort is efficient for almost sorted Data.
